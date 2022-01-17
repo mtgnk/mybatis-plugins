@@ -18,7 +18,7 @@ dependencies {
     // mybatisクラス自動生成定義
     mybatisGenerator group: "org.postgresql", name: "postgresql" version:42.3.1
     mybatisGenerator group: "org.mybatis.generator", name: "mybatis-generator-core" version:1.4.0
-    mybatisGenerator group: "com.mtgnk", name: "mybatis_plugins", version: 0.0.1
+    mybatisGenerator group: "com.mtgnk", name: "mybatis-plugins", version: 0.0.1
 }
 
 task scdbExampleGenerator(dependsOn: ":core:generator-plugins:build" ) {
