@@ -33,3 +33,25 @@ tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
 }
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/mtgnk/mybatis-plugins")
+            credentials {
+                // GitHubのユーザー名を指定する
+                username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
+                // GitHubの認証用トークンを指定する
+                password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+    publications {
+        gpr(MavenPublication) {
+            artifactId = "com.mtgnk"
+            groupId = "mybatis_plugins"
+            version = "0.0.1"
+            from(components.java)
+        }
+    }
+}
